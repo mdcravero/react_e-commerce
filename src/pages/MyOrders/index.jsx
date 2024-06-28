@@ -18,6 +18,7 @@ function MyOrders() {
           <OrdersCard
             totalPrice={order.totalPrice}
             totalProds={order.totalProds}
+            datePurchase={order.datePurchase}
           />
         </Link>
       ))}

@@ -16,15 +16,24 @@ const CheckoutSideMenu = () => {
     context.setCartProds(filteredProds);
   };
 
+  function getCurrentDateFormatted() {
+    const date = new Date();
+    return date.toLocaleDateString();
+  }
+
+  const currentDate = getCurrentDateFormatted();
+
   const handleCheckout = () => {
     const orderToAdd = {
-      date: "21.06.24",
+      datePurchase: currentDate,
       products: context.cartProds,
       totalProds: context.cartProds.length,
       totalPrice: totalPrice(context.cartProds),
     };
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProds([]);
+
+    console.log("time: ", orderToAdd.datePurchase);
   };
 
   return (

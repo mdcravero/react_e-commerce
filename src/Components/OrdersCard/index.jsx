@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 const OrdersCard = (props) => {
-  const { totalPrice, totalProds } = props;
+  const { totalPrice, totalProds, datePurchase } = props;
 
   return (
     <div className="flex rounded-lg mb-4 justify-between items-center border border-black w-80 p-4">
@@ -13,7 +13,7 @@ const OrdersCard = (props) => {
         <div className="flex flex-col">
           <div className="flex gap-2">
             <CalendarIcon className="h-6 w-6 text-black cursor-pointer" />
-            <span className="font-light">20.06.24</span>
+            <span className="font-light">{datePurchase}</span>
           </div>
           <div className="flex gap-2">
             <ShoppingCartIcon className="h-6 w-6 text-black cursor-pointer" />
