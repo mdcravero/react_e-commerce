@@ -33,7 +33,7 @@ function Home() {
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
       {/* The cards renderize depends of items */}
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg p-6">
         {renderView()}
       </div>
       <ProductDetail />

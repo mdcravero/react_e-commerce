@@ -42,7 +42,7 @@ const Card = (data) => {
       onClick={() => showProduct(data.data)}
     >
       <figure className="relative shrink-0 overflow-hidden h-4/5 mb-4  w-full rounded-3xl">
-        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+        <span className="absolute bottom-0 left-0 bg-gray-200 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {/* El ? después de category ayuda a que renderice de igual forma el sitio */}
           {data.data.category}
         </span>

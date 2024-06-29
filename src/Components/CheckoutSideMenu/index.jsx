@@ -54,14 +54,14 @@ const CheckoutSideMenu = () => {
           ></XMarkIcon>
         </div>
       </div>
-      <div className="px-6 overflow-y-scroll flex-1">
+      <div className="px-5 overflow-y-scroll flex-1">
         {context.cartProds.map((product) => (
           <OrderCard
             key={product.id}
             id={product.id}
             title={product.title}
             imageURL={product.image}
-            price={product.price}
+            price={"$" + product.price}
             handleDelete={handleDelete}
           />
         ))}
