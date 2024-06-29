@@ -38,24 +38,24 @@ const Card = (data) => {
   };
   return (
     <div
-      className="bg-white cursor-pointer w-56 h-60 rounded-lg"
+      className="bg-white/60 backdrop-blur border-white-30 shadow-md cursor-pointer w-56 h-72 flex flex-col justify-center rounded-xl select-none"
       onClick={() => showProduct(data.data)}
     >
-      <figure className="relative mb-2 w-full h-4/5">
+      <figure className="relative shrink-0 overflow-hidden h-4/5 mb-4  w-full rounded-3xl">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {/* El ? después de category ayuda a que renderice de igual forma el sitio */}
           {data.data.category}
         </span>
         <img
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
           src={data.data.image}
           alt={data.data.title}
         />
         {renderIcon(data.data.id)}
       </figure>
-      <p className="flex justify-between">
-        <span className="text-sm font-light ">{data.data.title}</span>
-        <span className="text-lg font-medium trun">${data.data.price}</span>
+      <p className="flex justify-between items-center px-4">
+        <span className="text-sm font-light truncate">{data.data.title}</span>
+        <span className="text-lg font-medium">${data.data.price}</span>
       </p>
     </div>
   );
