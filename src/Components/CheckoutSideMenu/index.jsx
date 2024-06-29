@@ -32,8 +32,11 @@ const CheckoutSideMenu = () => {
     };
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProds([]);
+  };
 
-    console.log("time: ", orderToAdd.datePurchase);
+  const ShoppingCart = () => {
+    handleCheckout();
+    context.closeCheckoutSideMenu();
   };
 
   return (
@@ -73,7 +76,7 @@ const CheckoutSideMenu = () => {
         <Link to="/my-orders/last">
           <button
             className="w-full bg-black py-3 text-white rounded-lg"
-            onClick={() => handleCheckout()}
+            onClick={() => ShoppingCart()}
           >
             Checkout
           </button>

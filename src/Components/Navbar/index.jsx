@@ -1,5 +1,4 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
-
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
@@ -41,7 +40,10 @@ const Navbar = () => {
         </li>
         {navLinks(userLinks)}
         <li className="flex items-center">
-          <ShoppingCartIcon className="size-6 text-black" />
+          <ShoppingCartIcon
+            onClick={() => context.openCheckoutSideMenu()}
+            className="size-6 text-black cursor-pointer"
+          />
           <div>{context.cartProds.length}</div>
         </li>
       </ul>
