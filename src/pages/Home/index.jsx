@@ -3,6 +3,7 @@ import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
 import { ShoppingCartContext } from "../../Context";
+import { FaceFrownIcon } from "@heroicons/react/24/outline";
 
 function Home() {
   const context = useContext(ShoppingCartContext);
@@ -14,7 +15,12 @@ function Home() {
           <Card key={item.id} data={item} />
         ));
       } else {
-        return <div>We dont have anything</div>;
+        return (
+          <div className="flex items-center justify-center w-full">
+            <FaceFrownIcon className="h-8 w-8 text-gray-500 mr-2" />
+            <div className="text-gray-500 text-lg">We don't have anything</div>
+          </div>
+        );
       }
     } else {
       return context.items?.map((item) => <Card key={item.id} data={item} />);
