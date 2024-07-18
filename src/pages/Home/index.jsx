@@ -18,7 +18,9 @@ function Home() {
         return (
           <div className="flex items-center justify-center w-full">
             <FaceFrownIcon className="h-8 w-8 text-gray-500 mr-2" />
-            <div className="text-gray-500 text-lg">We don't have anything</div>
+            <div className="text-gray-500 text-lg">
+              We don&apos;t have anything
+            </div>
           </div>
         );
       }

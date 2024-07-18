@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
-const categories = ["All", "Women", "Men", "Electronics", "Jewelery", "Others"];
 const userLinks = ["My Orders", "My Account", "Sign In"];
 
 const navLinks = (items) => {
@@ -26,6 +25,7 @@ const navLinks = (items) => {
 
 const Navbar = () => {
   const context = useContext(ShoppingCartContext);
+  const categories = context.categories;
   return (
     <nav className="fixed z-10 top-0 flex justify-between items-center gap w-full py-5 px-8 font-light text-sm border bg-white">
       <ul className="flex items-center gap-x-4">

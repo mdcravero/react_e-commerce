@@ -32,8 +32,11 @@ export const ShoppingCartProvider = ({ children }) => {
   //Search Products
   const [searchByTitle, setSearchByTitle] = useState(null);
 
+  //Get only unique categories
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products?sort=desc")
+    fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => setItems(data));
   }, []);
@@ -48,6 +51,15 @@ export const ShoppingCartProvider = ({ children }) => {
     if (searchByTitle)
       setFilteredItems(filteredItemsByTitle(items, searchByTitle));
   }, [items, searchByTitle]);
+
+  //filter by catetories
+  useEffect(() => {
+    if (items) {
+      const categories = items.map((item) => item.category);
+      const uniqueCategories = [...new Set(categories)];
+      setCategories(uniqueCategories);
+    }
+  }, [items]);
 
   return (
     <ShoppingCartContext.Provider
@@ -72,6 +84,8 @@ export const ShoppingCartProvider = ({ children }) => {
         setSearchByTitle,
         filteredItems,
         setFilteredItems,
+        categories,
+        setCategories,
       }}
     >
       {children}
