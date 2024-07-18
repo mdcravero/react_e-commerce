@@ -3,52 +3,85 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
-const userLinks = ["My Orders", "My Account", "Sign In"];
+const navLinksRight = [
+  { to: '/my-orders', text: 'My orders' },
+  { to: '/my-account', text: 'My Account' },
+  { to: '/sign-in', text: 'Sign in' },
+]
 
-const navLinks = (items) => {
-  const activeStyle = ({ isActive }) =>
-    isActive ? "underline underline-offset-4" : "";
-  return items.map((item, index) => {
-    const path =
-      item === "All" ? "/" : `/${item.toLowerCase().replace(/\s/g, "-")}`;
-    const label = item;
+function NavBar() {
 
-    return (
-      <li key={index}>
-        <NavLink to={path} className={activeStyle}>
-          {label}
-        </NavLink>
-      </li>
-    );
-  });
-};
-
-const Navbar = () => {
   const context = useContext(ShoppingCartContext);
-  const categories = context.categories;
-  return (
-    <nav className="fixed z-10 top-0 flex justify-between items-center gap w-full py-5 px-8 font-light text-sm border bg-white">
-      <ul className="flex items-center gap-x-4">
-        <NavLink to="/" className="mr-8 font-bold text-base">
-          Tute-Shop
-        </NavLink>
-        {navLinks(categories)}
-      </ul>
-      <ul className="flex items-center gap-x-4">
-        <li className="mr-4 text-black/50 cursor-pointer">
-          user@tute-shop.com
-        </li>
-        {navLinks(userLinks)}
-        <li className="flex items-center">
-          <ShoppingCartIcon
-            onClick={() => context.openCheckoutSideMenu()}
-            className="size-6 text-black cursor-pointer"
-          />
-          <div>{context.cartProds.length}</div>
-        </li>
-      </ul>
-    </nav>
-  );
-};
+  
+  // Get the categories name from the context
+  const categories = context.categories
 
-export default Navbar;
+  // Create an array of objects with the categories name.
+  // That array held the data for the left side of the navbar links.
+  const navLinksLeft = categories.map((category) => {
+      return { to: `/${category}`, text: category }
+  })
+
+  const activeStyle = 'underline underline-offset-4'
+
+  const handleShowCheckoutSideMenu = () => {
+      if (context.isCheckoutSideMenuOpen) {
+          context.closeCheckoutSideMenu(false)
+      } else {
+          context.openCheckoutSideMenu()
+      }
+  }
+
+  return (
+      <>
+      <nav className='flex justify-between items-center bg-white fixed top-0 z-10 w-full py-5 px-8 text-sm font-light'>
+          <ul className='flex items-center gap-3'>
+              <li className='font-semibold text-lg'>
+                  <NavLink to='/'>
+                      Tute-Shop
+                  </NavLink>
+              </li> 
+
+              {navLinksLeft.map((link) => (
+                  <li key={link.to}>
+                      <NavLink 
+                          to={link.to}
+                          className={({ isActive }) => isActive ? activeStyle : 'undefined'}
+                      >
+                          {link.text}
+                      </NavLink>
+                  </li>
+              ))}
+
+          </ul>
+          <ul className='flex items-center gap-3'>
+
+              <li className='text-black/60'>
+                  tute@shop.com
+              </li>
+
+              {navLinksRight.map((link) => (
+                  <li key={link.to}>
+                      <NavLink 
+                          to={link.to}
+                          className={({ isActive }) => isActive ? activeStyle : 'undefined'}
+                      >
+                          {link.text}
+                      </NavLink>
+                  </li>
+              ))}
+
+              <li className='flex gap-1'>
+                  <ShoppingCartIcon 
+                      className='h-5 w-5 cursor-pointer' 
+                      onClick={handleShowCheckoutSideMenu}    
+                  />
+                  <div>{context.cartProds.length}</div> 
+              </li>
+          </ul>
+      </nav>
+      </>
+  )
+} 
+
+export default NavBar;
