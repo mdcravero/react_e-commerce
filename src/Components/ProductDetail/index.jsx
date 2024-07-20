@@ -32,9 +32,9 @@ const ProductDetail = () => {
         <span className="font-medium text-2xl mb-2">
           ${context.prodToShow.price}
         </span>
-        <span className="font-medium text-md">${context.prodToShow.title}</span>
+        <span className="font-medium text-md">{context.prodToShow.title}</span>
         <span className="font-light text-sm">
-          ${context.prodToShow.description}
+          {context.prodToShow.description}
         </span>
       </p>
     </aside>
