@@ -38,7 +38,7 @@ const Card = (data) => {
   };
   return (
     <div
-      className="bg-white/60 backdrop-blur border-white-30 shadow-md cursor-pointer w-56 h-72 flex flex-col justify-center rounded-xl select-none"
+      className="bg-white backdrop-blur border-white-30 shadow-md cursor-pointer w-56 h-72 flex flex-col justify-center rounded-xl select-none"
       onClick={() => showProduct(data.data)}
     >
       <figure className="relative shrink-0 overflow-hidden h-4/5 mb-4  w-full rounded-3xl">

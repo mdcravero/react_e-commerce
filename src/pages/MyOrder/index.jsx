@@ -19,7 +19,7 @@ function MyOrder() {
 
         <h1>My Orders</h1>
       </div>
-      <div className="flex flex-col w-80">
+      <div className=" bg-white flex flex-col w-80 rounded-lg border border-black p-3">
         {context.order?.[index]?.products?.map((product) => (
           <OrderCard
             key={product.id}

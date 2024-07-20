@@ -8,7 +8,7 @@ const OrdersCard = (props) => {
   const { totalPrice, totalProds, datePurchase } = props;
 
   return (
-    <div className="flex rounded-lg mb-4 justify-between items-center border border-black w-80 p-4">
+    <div className="bg-white flex rounded-lg mb-4 justify-between items-center border border-black w-80 p-4">
       <div className="flex justify-between w-full">
         <div className="flex flex-col">
           <div className="flex gap-2">

@@ -49,9 +49,7 @@ function Home() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center relative w-80 mb-4">
-        <h1 className="font-medium text-xl"> All Products</h1>
-      </div>
+      <div className="flex items-center justify-center relative w-80 mb-4"></div>
       <input
         className="mt-8 w-80 border-2 border-slate-200 p-2 rounded-2xl sle focus:outline-none select-none"
         type="text"
