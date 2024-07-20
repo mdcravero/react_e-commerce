@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
@@ -8,12 +9,22 @@ import { FaceFrownIcon } from "@heroicons/react/24/outline";
 function Home() {
   const context = useContext(ShoppingCartContext);
 
+  const { category } = useParams();
+
   const renderView = () => {
     if (context.searchByTitle?.length > 0) {
       if (context.filteredItems?.length > 0) {
-        return context.filteredItems?.map((item) => (
-          <Card key={item.id} data={item} />
-        ));
+        if (!category) {
+          return context.filteredItems?.map((item) => (
+            <Card key={item.id} data={item} />
+          ));
+        } else {
+          return context.filteredItems?.map((item) => {
+            if (item.category === category) {
+              return <Card key={item.id} data={item} />;
+            }
+          });
+        }
       } else {
         return (
           <div className="flex items-center justify-center w-full">
@@ -24,6 +35,13 @@ function Home() {
           </div>
         );
       }
+    }
+    if (category) {
+      return context.items?.map((item) => {
+        if (item.category === category) {
+          return <Card key={item.id} data={item} />;
+        }
+      });
     } else {
       return context.items?.map((item) => <Card key={item.id} data={item} />);
     }
