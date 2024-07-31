@@ -7,7 +7,7 @@ import { ShoppingCartProvider } from "../../Context";
 import MyOrder from "../MyOrder";
 import MyOrders from "../MyOrders";
 import SignIn from "../SignIn";
-import NoFound from "../NoFound";
+import NotFound from "../NotFound";
 import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
 
 const AppRoutes = () => {
@@ -19,7 +19,7 @@ const AppRoutes = () => {
     { path: "/my-orders", element: <MyOrders /> },
     { path: "/my-orders/last", element: <MyOrder /> },
     { path: "/my-orders/:id", element: <MyOrder /> },
-    { path: "*", element: <NoFound /> },
+    { path: "*", element: <NotFound /> },
     { path: "/sign-in", element: <SignIn /> },
   ]);
   return routes;
