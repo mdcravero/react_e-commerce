@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../Components/Layout";
 
 function MyAccount() {
-  const user = {
-    name: "John Doe",
-    address: "123 Main St",
-    phone: "555-1234"
+  //move this to context when you can xD
+  const [name, setName] = useState("John Doe");
+  const [address, setAddress] = useState("123 Main St");
+  const [phone, setPhone] = useState("555-1234");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Here you can update the user information in your backend
+    console.log(name, address, phone);
   };
 
   return (
@@ -15,9 +20,43 @@ function MyAccount() {
         <figure className="p-2">
           <img src="/avatar.svg" alt="" />
         </figure>
-        <p className="mb-2">Name: {user.name}</p>
-        <p className="mb-2">Address: {user.address}</p>
-        <p className="mb-2">Phone: {user.phone}</p>
+        <form onSubmit={handleSubmit} >
+          <div className="mb-2">
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="address">Address: </label>
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
+            />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="phone">Phone: </label>
+            <input
+              type="text"
+              id="phone"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+            />
+          </div>
+          <div className= "flex justify-center">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Update
+          </button>
+          </div>
+        </form>
       </div>
     </Layout>
   );
